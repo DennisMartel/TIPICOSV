@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "compritas",
-    "slug": "compritas",
+    "name": "TipicoSV",
+    "slug": "TipicoSV",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splashScreen.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F21212"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
