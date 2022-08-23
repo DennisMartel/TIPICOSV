@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
 import { AntDesign, Feather} from "expo-vector-icons";
 import theme from "./theme";
-import { colours } from "../../utils/Themes";
+import { colours, dimensions } from "../../utils/Themes";
 
 const CustomInput = ({ label, iconName, error, onFocus = () => {}, password, ...props }) => {
     const [hidePassword, setHidePassword] = useState(password);
@@ -19,7 +19,7 @@ const CustomInput = ({ label, iconName, error, onFocus = () => {}, password, ...
                     ? colours.gray
                     : colours.light
             }}>
-                <AntDesign name={iconName} size={22} style={theme.icon} color={colours.gray} />
+                <AntDesign name={iconName} size={dimensions.width / 20} style={theme.icon} color={colours.gray} />
                 <TextInput 
                     autoComplete="off"
                     autoCorrect={false}
@@ -39,7 +39,7 @@ const CustomInput = ({ label, iconName, error, onFocus = () => {}, password, ...
                         <Feather 
                             onPress={() => setHidePassword(!hidePassword)}
                             name={!hidePassword ? 'eye-off' : 'eye'}
-                            size={22}
+                            size={dimensions.width / 20}
                             color={colours.gray}
                         />
                     )

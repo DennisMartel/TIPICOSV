@@ -20,10 +20,11 @@ const theme = StyleSheet.create({
         alignItems: "center",
     },
     icon: {
-        marginRight: 10
+        marginRight: dimensions.width / 40,
     },
     input: {
-        flex: 1
+        flex: 1,
+        fontSize: dimensions.width / 25
     }
 })
 
