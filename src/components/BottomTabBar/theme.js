@@ -4,7 +4,7 @@ import { colours, dimensions } from "../../utils/Themes";
 const theme = StyleSheet.create({
     container: {
         position: "absolute",
-        bottom: "2%",
+        bottom: "3%",
         width: dimensions.width,
         alignItems: "center",
     },

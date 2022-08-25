@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { colours, dimensions, iconsBottomTabs } from "../../utils/Themes";
-import { AntDesign} from "expo-vector-icons";
+import { AntDesign} from "@expo/vector-icons";
 import theme from "./theme";
 
 const BottomTabBar = ({ state, descriptors, navigation }) => {
@@ -39,6 +39,7 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
 
                     return (
                         <TouchableOpacity
+                            key={index}
                             accessibilityRole="button"
                             accessibilityState={isFocused ? { selected: true } : {}}
                             accessibilityLabel={options.tabBarAccessibilityLabel}

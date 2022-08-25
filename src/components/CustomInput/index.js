@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
-import { AntDesign, Feather} from "expo-vector-icons";
+import { AntDesign, Feather} from "@expo/vector-icons";
 import theme from "./theme";
 import { colours } from "../../utils/Themes";
 

@@ -1,5 +1,5 @@
 import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
-import { AntDesign} from "expo-vector-icons";
+import { AntDesign} from "@expo/vector-icons";
 import CustomInput from "../../components/CustomInput";
 import theme from "./theme";
 import { colours, dimensions } from "../../utils/Themes";
