@@ -1,15 +1,18 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 
+import BottomTabBar from "../components/BottomTabBar";
 import Home from "../screens/Home";
 import Categories from "../screens/Categories";
 import Profile from "../screens/Profile";
 import Login from "../screens/Login";
 import Cart from "../screens/Cart";
-import BottomTabBar from "../components/BottomTabBar";
+import Product from "../screens/Product";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator()
 
-const Tabs = () => {
+const TabNavigation = () => {
     return (
         <Tab.Navigator screenOptions={{ headerShown: false }} tabBar={props => <BottomTabBar {...props} />}>
             <Tab.Screen options={{ title: "Inicio" }} name="home" component={Home} />
@@ -21,4 +24,13 @@ const Tabs = () => {
     )
 }
 
-export default Tabs;
+const StackNavigator = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen options={{ headerShown: false }} name="Home" component={TabNavigation} />
+            <Stack.Screen options={{ headerTitle: false, headerBackTitle: false, headerTransparent: true, headerTintColor: "white", title: "Producto"  }} name="product" component={Product} />
+        </Stack.Navigator>
+    )
+}
+
+export default StackNavigator;

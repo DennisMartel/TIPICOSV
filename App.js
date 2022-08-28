@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
-import TabStack from './src/Navigator/TabStack'
+import StackNavigator from './src/Navigator/TabStack'
 const App = () => {
     return (
       <NavigationContainer>
-          <TabStack />
+          <StackNavigator />
       </NavigationContainer>
     )
 }

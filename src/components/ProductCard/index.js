@@ -1,10 +1,10 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import theme from "./theme";
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, navigation }) => {
     return (
         <View style={theme.card}>
-            <TouchableOpacity style={theme.imageTop} onPress={() => alert(`producto: ${item.id}`)}>
+            <TouchableOpacity style={theme.imageTop} onPress={() => navigation.navigate("product", { id: item.id})}>
                 <Image source={{ uri: item.image }} resizeMode="stretch" style={theme.image} />
             </TouchableOpacity>
             <View style={theme.cardBody}>
