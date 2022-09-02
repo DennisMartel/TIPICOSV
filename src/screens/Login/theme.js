@@ -6,12 +6,13 @@ const theme = StyleSheet.create({
         flex: 1,
         width: "95%",
         justifyContent: "center",
-        marginBottom: dimensions.width / 3,
+        marginBottom: dimensions.width / 4.5,
     },
     title: {
         fontSize: dimensions.width / 12,
         marginBottom: dimensions.width / 10,
-        letterSpacing: 0.5
+        letterSpacing: 0.5,
+        color: colours.white
     },
     button: {
         flexDirection: "row",

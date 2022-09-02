@@ -1,23 +1,27 @@
 import { StyleSheet } from "react-native";
-import { Dimensions } from 'react-native';
-
-const { width, height } = Dimensions.get('window');
+import { dimensions } from "../../utils/Themes";
 
 const sliderTheme = StyleSheet.create({
     sliderContainer: {
-        height: height / 3.2,
+        borderRadius: dimensions.width/50,
+        height: dimensions.height / 4,
         justifyContent: "center",
         alignSelf: "center",
+        width: "95%",
+        marginTop: 10,
     }, 
     slider: {
         flex: 1,
         justifyContent: "center",
         backgroundColor: "transparent",
+        borderRadius: dimensions.width/20,
+        borderRadius: dimensions.width/50,
     },
     sliderImage: {
         width: "100%",
         height: "100%",
         alignSelf: "center",
+        borderRadius: dimensions.width/50,
     }
 });
 

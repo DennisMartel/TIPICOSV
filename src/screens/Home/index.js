@@ -11,8 +11,8 @@ import theme from "./theme"
 const Home = ({ navigation }) => {
     return (
         <SafeAreaView style={{ backgroundColor: colours.white }}>
-            <Header />
-            <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} centerContent={true} contentContainerStyle={{ alignItems: "center", paddingBottom: 120 }}>
+            <Header navigation={navigation}/>
+            <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} centerContent={true} contentContainerStyle={{ alignItems: "center", paddingBottom: 160 }}>
                 <Slider />
                 <View style={theme.container}>
                     <Text style={theme.title}>Categorias populares</Text>
@@ -20,7 +20,7 @@ const Home = ({ navigation }) => {
                         { categories.map((item, index) => <CardsCategories item={item} key={index} />)}
                     </ScrollView>
 
-                    <Text style={{ ...theme.title, marginTop: dimensions.width / 20 }}>Últimas publicaciones</Text>
+                    <Text style={{ ...theme.title, marginTop: dimensions.width / 20 }}>Recientes</Text>
                     <View style={theme.grid}>
                         { products.map((item, index) => <ProductCard item={item} key={index} navigation={navigation} />) }
                     </View>

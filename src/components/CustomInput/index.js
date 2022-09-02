@@ -4,13 +4,13 @@ import { AntDesign, Feather} from "@expo/vector-icons";
 import theme from "./theme";
 import { colours, dimensions } from "../../utils/Themes";
 
-const CustomInput = ({ label, iconName, error, onFocus = () => {}, password, ...props }) => {
+const CustomInput = ({ label, labelStyles, iconName, error, onFocus = () => {}, password, ...props }) => {
     const [hidePassword, setHidePassword] = useState(password);
     const [isFocused, setIsFocused] = useState(false);
     
     return (
         <View style={theme.container}>
-            <Text style={theme.label}>{label}</Text>
+            <Text style={{ ...theme.label, ...labelStyles }}>{label}</Text>
             <View style={{ 
                 ...theme.inputContainer, 
                 borderColor: error 

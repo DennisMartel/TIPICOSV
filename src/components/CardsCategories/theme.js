@@ -9,7 +9,6 @@ const theme = StyleSheet.create({
     image: {
         width: dimensions.width / 5,
         height: dimensions.width / 5,
-        borderRadius: 100,
     },
     name: {
         marginTop: 2,

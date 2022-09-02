@@ -1,4 +1,4 @@
-import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import { ImageBackground, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { AntDesign} from "@expo/vector-icons";
 import CustomInput from "../../components/CustomInput";
 import theme from "./theme";
@@ -10,7 +10,11 @@ const Login = () => {
     }
 
     return (
-        <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
+        <ImageBackground
+            source={{ uri: "https://png.pngtree.com/thumb_back/fw800/back_our/20190619/ourmid/pngtree-vegetarian-recipes-overshoot-banner-image_139051.jpg" }}
+            resizeMode="cover"
+            style={{ flex: 1 }}
+        >
             <KeyboardAvoidingView
                 behavior={(Platform.OS === 'ios') ? 'padding' : 'height'}
                 style={{ flex: 1, alignItems: "center" }}
@@ -22,6 +26,10 @@ const Login = () => {
                         iconName="user" 
                         placeholder="Ingresa tu usuario"
                         placeholderTextColor="rgba(0, 0, 0, 0.3)"
+                        labelStyles={{ 
+                            color: "white",
+                            fontWeight: "bold"
+                        }}
                     />
 
                     <CustomInput 
@@ -29,6 +37,10 @@ const Login = () => {
                         iconName="lock" 
                         placeholder="Ingresa tu contraseña" 
                         placeholderTextColor="rgba(0, 0, 0, 0.3)"
+                        labelStyles={{ 
+                            color: "white",
+                            fontWeight: "bold"
+                        }}
                         password 
                     />
 
@@ -43,7 +55,7 @@ const Login = () => {
                     </TouchableOpacity>
                 </View>
             </KeyboardAvoidingView>
-        </SafeAreaView>
+        </ImageBackground>
     )
 }
 

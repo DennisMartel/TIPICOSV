@@ -8,6 +8,7 @@ import Profile from "../screens/Profile";
 import Login from "../screens/Login";
 import Cart from "../screens/Cart";
 import Product from "../screens/Product";
+import { dimensions } from "../utils/Themes";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator()
@@ -26,9 +27,24 @@ const TabNavigation = () => {
 
 const StackNavigator = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            initialRouteName="home"
+        >
             <Stack.Screen options={{ headerShown: false }} name="Home" component={TabNavigation} />
-            <Stack.Screen options={{ headerTitle: false, headerBackTitle: false, headerTransparent: true, headerTintColor: "white", title: "Producto"  }} name="product" component={Product} />
+            <Stack.Screen 
+                options={{ 
+                    headerTransparent: true,
+                    headerBackTitle: "Atrás",
+                    headerTintColor: "white",
+                    headerBackTitleStyle: {
+                        fontWeight: "bold",
+                        fontSize: dimensions.width/22
+                    },
+                    headerTitle: ""
+                }} 
+                name="product" 
+                component={Product} 
+            />
         </Stack.Navigator>
     )
 }
