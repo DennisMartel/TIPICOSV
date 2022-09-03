@@ -4,7 +4,7 @@ import theme from "./theme";
 const ProductCard = ({ item, navigation }) => {
     return (
         <View style={theme.card}>
-            <TouchableOpacity style={theme.imageTop} onPress={() => navigation.navigate("product", { id: item.id})}>
+            <TouchableOpacity activeOpacity={0.8} style={theme.imageTop} onPress={() => navigation.navigate("product", { id: item.id})}>
                 <Image source={{ uri: item.image }} resizeMode="stretch" style={theme.image} />
             </TouchableOpacity>
             <View style={theme.cardBody}>

@@ -3,12 +3,12 @@ import Swiper from "react-native-swiper"
 import { colours } from "../../utils/Themes"
 import theme from "./theme"
 
-const Onboarding = () => {
+const Onboarding = ({ skip }) => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}>
             <StatusBar backgroundColor={colours.primaryColor} />
             <View style={theme.sliderContainer}>
-                <TouchableOpacity style={theme.btnOmit}>
+                <TouchableOpacity style={theme.btnOmit} onPress={() => skip()}>
                     <Text style={theme.labelBtnOmit}>Omitir</Text>
                 </TouchableOpacity>
                 <Swiper 
@@ -16,6 +16,8 @@ const Onboarding = () => {
                     showsButtons={false}
                     activeDotColor={colours.primaryColor}
                     containerStyle={theme.wrapper}
+                    key={3}
+                    removeClippedSubviews={false}
                 >
                     <View style={theme.slider}>
                         <Image

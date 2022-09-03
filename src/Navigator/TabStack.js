@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import { dimensions } from "../utils/Themes";
 
 import BottomTabBar from "../components/BottomTabBar";
 import Home from "../screens/Home";
@@ -8,7 +9,7 @@ import Profile from "../screens/Profile";
 import Login from "../screens/Login";
 import Cart from "../screens/Cart";
 import Product from "../screens/Product";
-import { dimensions } from "../utils/Themes";
+import Search from "../screens/Search";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator()
@@ -29,8 +30,11 @@ const StackNavigator = () => {
     return (
         <Stack.Navigator
             initialRouteName="home"
+            screenOptions={{ 
+                headerShown: false
+            }}
         >
-            <Stack.Screen options={{ headerShown: false }} name="Home" component={TabNavigation} />
+            <Stack.Screen name="Home" component={TabNavigation} />
             <Stack.Screen 
                 options={{ 
                     headerTransparent: true,
@@ -45,6 +49,7 @@ const StackNavigator = () => {
                 name="product" 
                 component={Product} 
             />
+            <Stack.Screen name="search" component={Search} />
         </Stack.Navigator>
     )
 }

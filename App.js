@@ -2,27 +2,32 @@ import { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import StackNavigator from './src/Navigator/TabStack'
 
-import { getData } from './src/utils/LocalStorage';
-import Onboarding from './src/components/Onboarding';
+import { getData, storeData } from './src/utils/LocalStorage'
+import Onboarding from './src/components/Onboarding'
 
-const App = () => {    
-    const [firstOpen, setFirstOpen] = useState(null);
+const App = () => {
+    const [firstOpenApp, setFirstOpenApp] = useState(null)
 
     useEffect(() => {
         checkFirstOpenApp()
     }, [])
 
-    const checkFirstOpenApp = async () => {
-        const storage = await getData('open');
-        // !storage ? await storeData('open', true) : setFirstOpen(true);
+    const skip = async () => {
+        await storeData('open', true)
+        setFirstOpenApp(true)
     }
 
-    if (firstOpen === null) return <Onboarding />
+    const checkFirstOpenApp = async () => {
+        const res = await getData('open')
+        res && setFirstOpenApp(true)
+    }
+
+    if (firstOpenApp == null) return <Onboarding skip={skip}/>
 
     return (
-      <NavigationContainer>
-          <StackNavigator />
-      </NavigationContainer>
+        <NavigationContainer>
+            <StackNavigator />
+        </NavigationContainer>
     )
 }
 

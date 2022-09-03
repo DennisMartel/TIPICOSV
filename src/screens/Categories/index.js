@@ -1,23 +1,27 @@
+import { useRef } from "react"
 import { Image, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import Swiper from "react-native-swiper";
+import Swiper from "react-native-swiper"
 import Header from "../../components/Header"
-import { categories } from "../../utils/Database/categories";
-import { colours, dimensions } from "../../utils/Themes";
+import { categories } from "../../utils/Database/categories"
+import { sliders } from "../../utils/Database/slider"
+import { colours, dimensions } from "../../utils/Themes"
 
-const Categories = () => {
+const Categories = ({ navigation }) => {
+    const isCarousel = useRef(null)
+
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
-            <Header />
+            <Header navigation={navigation} back />
             <ScrollView overScrollMode="never" contentContainerStyle={{ alignItems: "center", paddingBottom: 120 }}>
                 <View style={theme.container}>
-                    <Swiper overScrollMode='never' activeDotColor={colours.primaryColor} loop style={theme.sliderContainer}>
+                    {/* <Swiper overScrollMode='never' activeDotColor={colours.primaryColor} loop style={theme.sliderContainer}>
                         <TouchableOpacity onPress={() => alert('hi')} style={theme.slider}>
                             <Image source={{ uri: "https://png.pngtree.com/thumb_back/fw800/back_our/20190619/ourmid/pngtree-vegetarian-recipes-overshoot-banner-image_139051.jpg" }} style={theme.sliderImage} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => alert('hi')} style={theme.slider}>
                             <Image source={{ uri: "https://png.pngtree.com/thumb_back/fw800/back_our/20190619/ourmid/pngtree-vegetarian-recipes-overshoot-banner-image_139051.jpg" }} style={theme.sliderImage} />
                         </TouchableOpacity>
-                    </Swiper>
+                    </Swiper> */}
                     <View style={theme.grid}>
                         {
                             categories.map((item, index) => (
@@ -39,13 +43,13 @@ const Categories = () => {
 const theme = StyleSheet.create({
     container: {
         width: "95%",
-        marginVertical: dimensions.width/30,
+        marginVertical: dimensions.width / 30,
         alignItems: "center"
     },
     sliderContainer: {
-        height: dimensions.height/3.5,
+        height: dimensions.height / 3.5,
         backgroundColor: colours.light,
-        marginBottom: dimensions.width/20,
+        marginBottom: dimensions.width / 20,
         justifyContent: "center",
         alignSelf: "center",
     },
@@ -65,12 +69,12 @@ const theme = StyleSheet.create({
         justifyContent: "space-between"
     },
     content: {
-        width: dimensions.width/2.20,
-        marginBottom: dimensions.width/20,
+        width: dimensions.width / 2.20,
+        marginBottom: dimensions.width / 20,
     },
     image: {
         width: "100%",
-        height: dimensions.width/3.20,
+        height: dimensions.width / 3.20,
         resizeMode: "contain",
     }
 })

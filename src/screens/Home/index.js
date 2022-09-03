@@ -11,7 +11,7 @@ import theme from "./theme"
 const Home = ({ navigation }) => {
     return (
         <SafeAreaView style={{ backgroundColor: colours.white }}>
-            <Header navigation={navigation}/>
+            <Header topBar navigation={navigation}/>
             <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} centerContent={true} contentContainerStyle={{ alignItems: "center", paddingBottom: 160 }}>
                 <Slider />
                 <View style={theme.container}>

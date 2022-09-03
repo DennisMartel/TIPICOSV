@@ -3,7 +3,6 @@ import { colours, dimensions } from '../../utils/Themes';
 
 const searchBarTheme = StyleSheet.create({
     container: {
-        marginTop: dimensions.width/40,
         flexDirection: "row",
         alignItems: "center",
     },

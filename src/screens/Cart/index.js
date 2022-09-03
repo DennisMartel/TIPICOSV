@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 const Cart = () => {
     return (
         <SafeAreaView>
-            <Header />
+            <Header topBar />
             <Text>Pantalla carrito de compras</Text>
         </SafeAreaView>
     )

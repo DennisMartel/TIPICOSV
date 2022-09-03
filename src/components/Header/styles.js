@@ -12,6 +12,7 @@ const headerTheme = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
+        marginBottom: dimensions.width * 0.02
     },
     brandLogo: {
         color: colours.white,

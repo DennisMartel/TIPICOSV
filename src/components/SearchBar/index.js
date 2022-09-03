@@ -17,12 +17,13 @@ const SearchBar = ({ back, navigation }) => {
             <View style={{ ...searchBarTheme.inputContainer }}>
                 <AntDesign name="search1" color={colours.gray} size={dimensions.width/18} style={searchBarTheme.iconSearch}/>
                 <TextInput 
-                    placeholder="Buscar..."
+                    placeholder="¿Qué deseas buscar...?"
                     placeholderTextColor="rgba(0, 0, 0, 0.5)"
                     autoComplete="off"
                     autoCorrect={false}
                     autoCapitalize="none"
                     style={searchBarTheme.input}
+                    onFocus={() => navigation.navigate('search')}
                 />
             </View>
         </View>

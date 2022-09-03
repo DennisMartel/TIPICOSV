@@ -44,7 +44,7 @@ const Login = () => {
                         password 
                     />
 
-                    <TouchableOpacity style={theme.button} onPress={() => login()}>
+                    <TouchableOpacity activeOpacity={0.8} style={theme.button} onPress={() => login()}>
                         <AntDesign 
                             name="login" 
                             size={dimensions.width / 22} 
