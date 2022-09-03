@@ -39,24 +39,12 @@ const theme = StyleSheet.create({
         fontWeight: "700",
         letterSpacing: 0.4,
     },
-    price: {
-        overflow: "hidden",
+    reviews: {
         flexDirection: "row",
-        flexWrap: "wrap",
-        marginTop: "auto",
+        marginTop: "auto"
     },
-    discountPrice: {
-        color: colours.primaryColor,
-        fontWeight: "600",
-        marginRight: dimensions.width / 40,
-        fontSize: dimensions.width / 22
-    },
-    normalPrice: {
-        color: colours.secondaryColor,
-        fontWeight: "400",
-        fontSize: dimensions.width / 28,
-        alignSelf: "center",
-        textDecorationLine: "line-through"
+    startIcon: {
+        marginRight: dimensions.width * 0.01,
     }
 })
 

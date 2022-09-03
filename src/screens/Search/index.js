@@ -1,12 +1,13 @@
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { AntDesign } from "@expo/vector-icons"
 import Header from "../../components/Header"
-import { products } from "../../utils/Database/products";
-import { colours, dimensions } from "../../utils/Themes";
+import { products } from "../../utils/Database/products"
+import { colours, dimensions } from "../../utils/Themes"
 
 const Search = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
-            <Header back navigation={navigation}/>
+            <Header back navigation={navigation} />
             <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} centerContent={true} contentContainerStyle={{ alignItems: "center", paddingBottom: 20 }}>
                 <View style={theme.container}>
                     {
@@ -17,9 +18,12 @@ const Search = ({ navigation }) => {
                                 </TouchableOpacity>
                                 <View style={theme.cardContent}>
                                     <Text style={theme.title} numberOfLines={2}>{item.name}</Text>
-                                    <View style={theme.prices}>
-                                        <Text style={theme.discountPrice}>${Number.parseFloat(item.discountPrice).toFixed(2)}</Text>
-                                        <Text style={theme.normalPrice}>${Number.parseFloat(item.price).toFixed(2)}</Text>
+                                    <View style={theme.reviews}>
+                                        <AntDesign name="star" color={item.review >= 1 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon} />
+                                        <AntDesign name="star" color={item.review >= 2 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon} />
+                                        <AntDesign name="star" color={item.review >= 3 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon} />
+                                        <AntDesign name="star" color={item.review >= 4 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon} />
+                                        <AntDesign name="star" color={item.review >= 5 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon} />
                                     </View>
                                 </View>
                             </View>
@@ -74,23 +78,11 @@ const theme = StyleSheet.create({
         marginBottom: dimensions.width * 0.01,
         fontSize: dimensions.width * 0.04
     },
-    prices: {
+    reviews: {
         flexDirection: "row",
-        marginTop: "auto"
     },
-    discountPrice: {
-        color: colours.primaryColor,
-        fontWeight: "700",
-        letterSpacing: 0.2,
+    startIcon: {
         marginRight: dimensions.width * 0.01,
-        fontSize: dimensions.width * 0.05
-    },
-    normalPrice: {
-        textDecorationLine: "line-through",
-        fontWeight: "500",
-        opacity: 0.8,
-        fontSize: dimensions.width * 0.04,
-        alignSelf: "flex-end"
     }
 })
 

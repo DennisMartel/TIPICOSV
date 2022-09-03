@@ -1,4 +1,6 @@
+import { AntDesign } from "@expo/vector-icons";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import { colours, dimensions } from "../../utils/Themes";
 import theme from "./theme";
 
 const ProductCard = ({ item, navigation }) => {
@@ -9,9 +11,12 @@ const ProductCard = ({ item, navigation }) => {
             </TouchableOpacity>
             <View style={theme.cardBody}>
                 <Text numberOfLines={2} style={theme.name}>{item.name}</Text>
-                <View style={theme.price}>
-                    <Text style={theme.discountPrice}>${(item.discountPrice).toFixed(2)}</Text>
-                    <Text style={theme.normalPrice}>${(item.price).toFixed(2)}</Text>
+                <View style={theme.reviews}>
+                    <AntDesign name="star" color={item.review >= 1 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon}/>
+                    <AntDesign name="star" color={item.review >= 2 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon}/>
+                    <AntDesign name="star" color={item.review >= 3 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon}/>
+                    <AntDesign name="star" color={item.review >= 4 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon}/>
+                    <AntDesign name="star" color={item.review >= 5 ? colours.yellow : colours.gray} size={dimensions.width * 0.04} style={theme.startIcon}/>
                 </View>
             </View>
         </View>

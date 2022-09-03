@@ -13,7 +13,7 @@ const Home = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colours.white }}>
             <Header topBar navigation={navigation}/>
-            <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} centerContent={true} contentContainerStyle={{ alignItems: "center", paddingBottom: 50}}>
+            <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} centerContent={true} contentContainerStyle={{ alignItems: "center" }}>
                 <Slider />
                 <View style={theme.container}>
                     <Text style={theme.title}>Categorias populares</Text>

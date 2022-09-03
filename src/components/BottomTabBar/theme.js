@@ -17,7 +17,7 @@ const theme = StyleSheet.create({
         height: dimensions.width*0.15,
         width: "95%",
         padding: dimensions.width * 0.03,
-        borderRadius: dimensions.width * 0.10
+        borderRadius: dimensions.width * 0.07
     },
     btnBottomTabs: {
         borderRadius: 100,
