@@ -4,8 +4,8 @@ import { colours, dimensions } from "../../utils/Themes";
 const theme = StyleSheet.create({
     button: {
         position: "absolute",
-        bottom: dimensions.height * 0.13,
-        right: dimensions.width * 0.03,
+        bottom: dimensions.height * 0.02,
+        right: dimensions.width * 0.02,
         backgroundColor: colours.primaryColor,
         width: dimensions.width * 0.13,
         height: dimensions.width *0.13,

@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { colours, dimensions, iconsBottomTabs } from "../../utils/Themes";
 import { AntDesign} from "@expo/vector-icons";
 import theme from "./theme";
@@ -6,7 +6,7 @@ import theme from "./theme";
 const BottomTabBar = ({ state, descriptors, navigation }) => {
     return (
         <View style={theme.container}>
-            <View style={{ ...theme.bottomTabs, backgroundColor: colours.primaryColor }}>
+            <View style={theme.bottomTabs}>
                 {state.routes.map((route, index) => {
                     const { options } = descriptors[route.key];
                     const label =

@@ -3,28 +3,28 @@ import { colours, dimensions } from "../../utils/Themes";
 
 const theme = StyleSheet.create({
     container: {
-        position: "absolute",
-        bottom: "3%",
         width: dimensions.width,
+        bottom: dimensions.width * 0.01,
         alignItems: "center",
+        backgroundColor: "white",
+        paddingVertical: dimensions.width * 0.01
     },
     bottomTabs: {
         alignItems: "center",
-        borderRadius: dimensions.width / 50,
         flexDirection: "row",
-        height: dimensions.width / 10,
-        width: "95%",
         justifyContent: "space-between",
-        paddingHorizontal: dimensions.width / 30,
-        paddingVertical: dimensions.width / 17
+        backgroundColor: colours.primaryColor,
+        height: dimensions.width*0.15,
+        width: "95%",
+        padding: dimensions.width * 0.03,
+        borderRadius: dimensions.width * 0.10
     },
     btnBottomTabs: {
-        // flex: 1,
-        borderRadius: dimensions.width / 10,
+        borderRadius: 100,
         alignItems: "center",
         justifyContent: "center",
-        height: dimensions.width / 11,
-        width: dimensions.width / 11,
+        height: dimensions.width * 0.12,
+        width: dimensions.width * 0.12,
     }
 })
 

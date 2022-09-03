@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import StackNavigator from './src/Navigator/TabStack'
+import StackNavigator from './src/Navigator/StackNavigator'
 
 import { getData, storeData } from './src/utils/LocalStorage'
 import Onboarding from './src/components/Onboarding'
