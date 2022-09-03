@@ -1,4 +1,5 @@
 import { SafeAreaView, ScrollView, Text, View } from "react-native"
+import ButtonAdd from "../../components/FloatButton"
 import CardsCategories from "../../components/CardsCategories"
 import Header from "../../components/Header"
 import ProductCard from "../../components/ProductCard"
@@ -10,9 +11,9 @@ import theme from "./theme"
 
 const Home = ({ navigation }) => {
     return (
-        <SafeAreaView style={{ backgroundColor: colours.white }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: colours.white }}>
             <Header topBar navigation={navigation}/>
-            <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} centerContent={true} contentContainerStyle={{ alignItems: "center", paddingBottom: 160 }}>
+            <ScrollView overScrollMode="never" showsVerticalScrollIndicator={false} centerContent={true} contentContainerStyle={{ alignItems: "center", paddingBottom: 110}}>
                 <Slider />
                 <View style={theme.container}>
                     <Text style={theme.title}>Categorias populares</Text>
@@ -26,6 +27,7 @@ const Home = ({ navigation }) => {
                     </View>
                 </View>
             </ScrollView>
+            <ButtonAdd navigation={navigation} />
         </SafeAreaView>
     )
 }

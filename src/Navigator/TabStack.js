@@ -10,6 +10,7 @@ import Login from "../screens/Login";
 import Cart from "../screens/Cart";
 import Product from "../screens/Product";
 import Search from "../screens/Search";
+import Food from "../screens/Food";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator()
@@ -50,6 +51,7 @@ const StackNavigator = () => {
                 component={Product} 
             />
             <Stack.Screen name="search" component={Search} />
+            <Stack.Screen name="food" component={Food} />
         </Stack.Navigator>
     )
 }
