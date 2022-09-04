@@ -12,7 +12,8 @@
       "backgroundColor": "#F21212"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/e27e50db-ea91-450e-8d9a-5c91a1ecec11"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -26,11 +27,19 @@
         "backgroundColor": "#FFFFFF"
       }
     },
-    "notification":{
-      "icon":"./assets/iconito.png"
+    "notification": {
+      "icon": "./assets/iconito.png"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e27e50db-ea91-450e-8d9a-5c91a1ecec11"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
