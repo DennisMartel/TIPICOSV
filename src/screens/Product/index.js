@@ -14,6 +14,7 @@ import { FontAwesome5 } from "@expo/vector-icons"
 import Swiper from "react-native-swiper";
 
 import { colours, dimensions } from "../../utils/Themes"
+import { getToken } from "../../utils/Notifications"
 import Header from "../../components/Header"
 import AlertComponent from "../../components/Alert"
 
@@ -28,8 +29,10 @@ const Product = ({ navigation }) => {
         { url: "https://tipsparatuviaje.com/wp-content/uploads/2020/02/pupusas-comida.jpg" }
     ]
 
-    const addToFavorites = () => {
+    const addToFavorites = async () => {
         AlertComponent("Platillo típico agregado a favoritos", false)
+        const token = await getToken()
+        console.log("pushToken: "+token);
     }
 
     return (
