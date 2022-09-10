@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import StackNavigator from './src/Navigator/StackNavigator'
 
-import { getData, storeData } from './src/utils/LocalStorage'
+import { clearAll, getData, storeData } from './src/utils/LocalStorage'
 import Onboarding from './src/components/Onboarding'
 import { startNotifications } from './src/utils/Notifications'
+import FavoritesState from './src/context/Favorites/FavoritesState'
 
 const App = () => {
     const notificationListener = useRef();
@@ -30,9 +31,11 @@ const App = () => {
     if (firstOpenApp == null) return <Onboarding skip={skip}/>
 
     return (
-        <NavigationContainer>
-            <StackNavigator />
-        </NavigationContainer>
+        <FavoritesState>
+            <NavigationContainer>
+                <StackNavigator />
+            </NavigationContainer>
+        </FavoritesState>
     )
 }
 

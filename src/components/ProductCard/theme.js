@@ -25,6 +25,7 @@ const theme = StyleSheet.create({
     image: {
         width: "100%",
         height: dimensions.width / 2.8,
+        resizeMode: "contain",
         borderRadius: 4
     },
     cardBody: {

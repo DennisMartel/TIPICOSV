@@ -48,7 +48,7 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
                             onLongPress={onLongPress}
                             style={{ ...theme.btnBottomTabs, backgroundColor: isFocused ? colours.white : "transparent"}}
                         >
-                            <AntDesign name={iconsBottomTabs[label]} size={dimensions.width / 15} color={isFocused ? colours.primaryColor : colours.white} />
+                            <AntDesign name={iconsBottomTabs[label]} size={ isFocused ? dimensions.width / 15 : dimensions.width / 20} color={isFocused ? colours.primaryColor : colours.white} />
                         </TouchableOpacity>
                     );
                 })}

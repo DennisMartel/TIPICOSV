@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import {
+    Text,
     Modal,
     SafeAreaView,
     TouchableOpacity,
@@ -12,28 +13,35 @@ import {
 import ImageViewer from 'react-native-image-zoom-viewer'
 import { FontAwesome5 } from "@expo/vector-icons"
 import Swiper from "react-native-swiper";
-
 import { colours, dimensions } from "../../utils/Themes"
-import { getToken } from "../../utils/Notifications"
+import { products } from '../../utils/Database/products'
 import Header from "../../components/Header"
-import AlertComponent from "../../components/Alert"
+import FavoritesContext from "../../context/Favorites/FavoritesContext";
 
 const BANNER_H = dimensions.height / 2.6
 
-const Product = ({ navigation }) => {
-    const [showModal, setShowModal] = useState(false);
-    const scrollA = useRef(new Animated.Value(0)).current;
+const Product = ({ navigation, route }) => {
+    const { id } = route.params
+    const { addToFavorites } = useContext(FavoritesContext)
+    const [showModal, setShowModal] = useState(false)
+    const [productInfo, setProductInfo] = useState({})
+    const [images, setImages] = useState([])
+    const [imageZoom, setImageZoom] = useState(0)
+    const scrollA = useRef(new Animated.Value(0)).current
 
-    const images = [
-        { url: "https://tipsparatuviaje.com/wp-content/uploads/2020/02/pupusas-comida.jpg" },
-        { url: "https://tipsparatuviaje.com/wp-content/uploads/2020/02/pupusas-comida.jpg" }
-    ]
-
-    const addToFavorites = async () => {
-        AlertComponent("Platillo típico agregado a favoritos", false)
-        const token = await getToken()
-        console.log("pushToken: "+token);
-    }
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            for (let index = 0; index < products.length; index++) {
+                if (products[index].id == id) {
+                    setProductInfo(products[index])
+                    setImages([{ url: products[index].image}])
+                    return
+                }
+            }
+        });
+      
+        return unsubscribe;
+    }, [navigation])
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -41,6 +49,7 @@ const Product = ({ navigation }) => {
 
             <Modal visible={showModal} transparent>
                 <ImageViewer
+                    index={imageZoom}
                     imageUrls={images}
                     enablePreload
                     saveToLocalByLongPress
@@ -63,26 +72,25 @@ const Product = ({ navigation }) => {
 
                 <View style={styles.bannerContainer}>
                     <Animated.View style={styles.banner(scrollA)}>
-                        <TouchableOpacity 
-                            style={{ 
-                                    position: "absolute", 
-                                    right: dimensions.width*0.03, 
-                                    top: dimensions.width*0.03, 
-                                    backgroundColor: colours.light, 
-                                    height: dimensions.width *0.12,
-                                    width: dimensions.width *0.12,
-                                    borderRadius: 100,
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    zIndex: 10, 
-                                }}
-                                activeOpacity={0.8}
-                                onPress={() => addToFavorites()}
-                            >
+                        <TouchableOpacity style={{ 
+                                position: "absolute", 
+                                right: dimensions.width*0.03, 
+                                top: dimensions.width*0.03, 
+                                backgroundColor: colours.light, 
+                                height: dimensions.width*0.12,
+                                width: dimensions.width*0.12,
+                                borderRadius: 100,
+                                justifyContent: "center",
+                                alignItems: "center",
+                                zIndex: 10, 
+                            }}
+                            activeOpacity={0.8}
+                            onPress={() => addToFavorites(productInfo)}
+                        >
                             <AntDesign name="heart" color={colours.primaryColor} size={dimensions.width*0.05} />
                         </TouchableOpacity>
                         <Swiper
-                            key={2}
+                            key={images.length}
                             showsButtons
                             activeDotColor={colours.primaryColor}
                             height={dimensions.height / 2.6}
@@ -90,17 +98,20 @@ const Product = ({ navigation }) => {
                             nextButton={<FontAwesome5 name="chevron-right" size={dimensions.width*0.05} color={colours.primaryColor} />}
                             removeClippedSubviews={false}
                         >
-                            <TouchableOpacity activeOpacity={1} style={styles.slider} onPress={() => setShowModal(true)}>
-                                <Image source={{ uri: "https://tipsparatuviaje.com/wp-content/uploads/2020/02/pupusas-comida.jpg" }} resizeMode="cover" style={styles.sliderImage} />
-                            </TouchableOpacity>
-                            <TouchableOpacity activeOpacity={1} style={styles.slider} onPress={() => setShowModal(true)}>
-                                <Image source={{ uri: "https://tipsparatuviaje.com/wp-content/uploads/2020/02/pupusas-comida.jpg" }} resizeMode="cover" style={styles.sliderImage} />
-                            </TouchableOpacity>
+                            {images.map((item, index) => (
+                                <TouchableOpacity key={index} activeOpacity={1} style={styles.slider} onPress={() => {
+                                    setShowModal(true)
+                                    setImageZoom(index)
+                                }}>
+                                    <Image source={{ uri: item.url }} resizeMode="cover" style={styles.sliderImage} />
+                                </TouchableOpacity>
+                            ))}
                         </Swiper>
                     </Animated.View>
                 </View>
 
-                <View style={{ width: "95%" }}>
+                <View style={{ width: "95%", marginVertical: dimensions.width*0.03 }}>
+                    <Text style={{ fontWeight: "400", fontSize: dimensions.width*0.07, opacity: 0.7 }}>{productInfo?.name}</Text>
                 </View>
             </Animated.ScrollView>
         </SafeAreaView>

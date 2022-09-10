@@ -1,5 +1,4 @@
 import { Dimensions, Image, TouchableOpacity, View } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
 import Swiper from 'react-native-swiper';
 import sliderTheme from './sliderTheme';
 import { colours, dimensions } from '../../utils/Themes'
@@ -10,7 +9,6 @@ const Slider = () => {
     return (
         <View style={sliderTheme.sliderContainer}>
             <Swiper 
-                showsButtons 
                 overScrollMode='never' 
                 autoplayTimeout={5} 
                 activeDotColor={colours.primaryColor} 
@@ -18,8 +16,6 @@ const Slider = () => {
                 loop 
                 autoplay 
                 height={height / 4}
-                prevButton={<FontAwesome5 name="chevron-left" size={dimensions.width/20} color={colours.primaryColor} />}
-                nextButton={<FontAwesome5 name="chevron-right" size={dimensions.width/20} color={colours.primaryColor} />}
                 removeClippedSubviews={false}
             >
                 <TouchableOpacity activeOpacity={1} style={sliderTheme.slider}>
