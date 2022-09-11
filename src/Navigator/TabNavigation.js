@@ -1,10 +1,11 @@
+import { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
 import { colours, dimensions } from "../utils/Themes"
 import Home from "../screens/Home";
 import Categories from "../screens/Categories";
+import Favorites from '../screens/Favorites'
 import Login from "../screens/Login";
-import { useContext } from "react";
 import FavoritesContext from "../context/Favorites/FavoritesContext";
 
 const Tab = createBottomTabNavigator();
@@ -56,7 +57,7 @@ const TabNavigation = () => {
                     }, 
                 }} 
                 name="favorites" 
-                component={Categories} 
+                component={Favorites} 
             />
             <Tab.Screen name="account" component={Login} />
         </Tab.Navigator>

@@ -12,7 +12,7 @@ const Header = ({ navigation, back, topBar }) => {
                 {
                     topBar && (
                         <View style={headerTheme.topBar}>
-                            <Text style={headerTheme.brandLogo}>TipicoSV.</Text>
+                            <Text onPress={() => navigation.navigate('home')} style={headerTheme.brandLogo}>TipicoSV</Text>
                             <TouchableOpacity style={headerTheme.bell}>
                                 <FontAwesome name="bell" color={colours.white} size={dimensions.width/15} />
                             </TouchableOpacity>

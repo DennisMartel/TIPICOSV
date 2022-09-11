@@ -34,12 +34,30 @@ const FavoritesState = ({ children }) => {
         }
     }
 
-    const removeItemFavorites = (data) => {
-        dispatch({ type: REMOVE_ITEM_FAVORITES, payload: data })
+    const removeItemFavorites = async (id) => {
+        try {
+            const favorites = await getData('favorites');
+            let myFavorites = favorites.filter((item) => {
+                return item.id !== id
+            })
+            await storeData('favorites', myFavorites)
+            verifyFavoriteItems().then(data => {
+                dispatch({ type: REMOVE_ITEM_FAVORITES, payload: {favoritesItems: data} })
+            })
+            AlertComponent('Platillo típico eliminado de favoritos', false)
+        } catch (err) {
+            console.log(err);
+        }
     }
 
-    const removeAllFavorites = () => {
-        dispatch({ type: REMOVE_ALL_FAVORITES })
+    const removeAllFavorites = async () => {
+        try {
+            await storeData('favorites', [])
+            dispatch({ type: REMOVE_ALL_FAVORITES, payload: {favoritesItems: []} })
+            AlertComponent('La lista ha sido limpiada', false)
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const verifyFavoriteItems = async () => {

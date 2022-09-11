@@ -16,12 +16,14 @@ const FavoritesReducer = (state, action) => {
 
         case REMOVE_ITEM_FAVORITES:
             return {
-                ...state
+                ...state,
+                favoritesItems: payload.favoritesItems
             }
 
         case REMOVE_ALL_FAVORITES:
             return {
-                ...state
+                ...state,
+                favoritesItems: payload.favoritesItems
             }
 
         default:

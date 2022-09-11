@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import StackNavigator from './src/Navigator/StackNavigator'
 
-import { clearAll, getData, storeData } from './src/utils/LocalStorage'
+import { getData, storeData } from './src/utils/LocalStorage'
 import Onboarding from './src/components/Onboarding'
 import { startNotifications } from './src/utils/Notifications'
 import FavoritesState from './src/context/Favorites/FavoritesState'
 
 const App = () => {
-    // clearAll()
     const notificationListener = useRef();
     const responseListener = useRef();
 
