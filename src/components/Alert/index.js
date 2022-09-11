@@ -2,7 +2,7 @@ import { Alert } from "react-native";
 
 const AlertComponent = (msg, cancelPress) => {
     Alert.alert(
-        "TipicoSV. - Notificación",
+        "TipicoSV - Notificación",
         `${msg || "Mensaje"}`,
         [
             cancelPress && { text: "CANCELAR", onPress: () => {} },

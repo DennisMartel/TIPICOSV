@@ -8,6 +8,7 @@ import { startNotifications } from './src/utils/Notifications'
 import FavoritesState from './src/context/Favorites/FavoritesState'
 
 const App = () => {
+    // clearAll()
     const notificationListener = useRef();
     const responseListener = useRef();
 

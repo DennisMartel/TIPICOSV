@@ -11,8 +11,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigation = () => {
     const { favoritesItems } = useContext(FavoritesContext)
-    console.log(favoritesItems);
-    
+
     return (
         <Tab.Navigator
             initialRouteName="home"
@@ -39,7 +38,7 @@ const TabNavigation = () => {
                     return (
                         <AntDesign 
                             name={iconName} 
-                            size={focused ? dimensions.width/15 : dimensions.width/18} 
+                            size={focused ? dimensions.width/14 : dimensions.width/20} 
                             color={colours.white} 
                         />
                     )
@@ -50,7 +49,7 @@ const TabNavigation = () => {
             <Tab.Screen name="categories" component={Categories} />
             <Tab.Screen 
                 options={{ 
-                    tabBarBadge: favoritesItems.length, 
+                    tabBarBadge: favoritesItems.length,
                     tabBarBadgeStyle: {
                         backgroundColor: colours.white,
                         color: colours.primaryColor

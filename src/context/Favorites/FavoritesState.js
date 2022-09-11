@@ -1,7 +1,8 @@
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import FavoritesContext from './FavoritesContext'
 import FavoritesReducer from './FavoritesReducer'
 import AlertComponent from '../../components/Alert'
+import { getData, storeData } from '../../utils/LocalStorage'
 import {
     ADD_TO_FAVORITES,
     REMOVE_ITEM_FAVORITES,
@@ -16,9 +17,21 @@ const FavoritesState = ({ children }) => {
 
     const [state, dispatch] = useReducer(FavoritesReducer, INITIAL_STATE)
     
-    const addToFavorites = (payload) => {
-        dispatch({ type: ADD_TO_FAVORITES, payload })
-        AlertComponent("Platillo típico agregado a favoritos", false)
+    const addToFavorites = async (data) => {
+        try {
+            const favorites = await getData('favorites');
+            if (!favorites.find((item) => item.id == data.id)) {
+                await storeData('favorites', favorites.concat({...data, cantidad: 1}))
+                verifyFavoriteItems().then(data => {
+                    dispatch({ type: ADD_TO_FAVORITES, payload: {favoritesItems: data} })
+                })
+                AlertComponent('Platillo típico agregado a favoritos', false)
+            } else {
+                AlertComponent('Platillo típico ya se encuentra agregado', false)
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const removeItemFavorites = (data) => {
@@ -28,6 +41,26 @@ const FavoritesState = ({ children }) => {
     const removeAllFavorites = () => {
         dispatch({ type: REMOVE_ALL_FAVORITES })
     }
+
+    const verifyFavoriteItems = async () => {
+        try {
+            const response = await getData('favorites');
+            if (response == null) {
+                await storeData('favorites', [])
+                dispatch({ type: ADD_TO_FAVORITES, payload: {favoritesItems: []} })
+            } else {
+                dispatch({ type: ADD_TO_FAVORITES, payload: {favoritesItems: response} })
+            }
+
+            return response
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        verifyFavoriteItems()
+    }, [])
 
     return (
         <FavoritesContext.Provider value={{ 

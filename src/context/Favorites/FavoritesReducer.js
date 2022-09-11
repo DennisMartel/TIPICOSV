@@ -6,18 +6,12 @@ import {
 
 const FavoritesReducer = (state, action) => {
     const { type, payload } = action
-
+    
     switch (type) {
         case ADD_TO_FAVORITES:
-            if (!state.favoritesItems.find(item => item.id == payload.id)) {
-                state.favoritesItems.push({
-                    ...payload,
-                    cantidad: 1,
-                })
-            }
             return {
                 ...state,
-                favoritesItems: [...state.favoritesItems]
+                favoritesItems: payload.favoritesItems
             }
 
         case REMOVE_ITEM_FAVORITES:

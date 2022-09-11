@@ -13,7 +13,7 @@ const Search = ({ navigation }) => {
                     {
                         products.map((item, index) => (
                             <View style={theme.card} key={index}>
-                                <TouchableOpacity onPress={() => navigation.navigate('product')} activeOpacity={0.7} style={theme.contentImage}>
+                                <TouchableOpacity onPress={() => navigation.navigate("product", { id: item.id})} activeOpacity={0.7} style={theme.contentImage}>
                                     <Image source={{ uri: item.image }} resizeMode="contain" style={theme.image} />
                                 </TouchableOpacity>
                                 <View style={theme.cardContent}>
